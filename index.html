@@ -1,0 +1,481 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Meri Pyaari Jaanu 💗🎀</title>
+
+<style>
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --pink: #ff79aa;
+    --dark-pink: #d9437d;
+    --light-pink: #fff0f6;
+    --purple: #e8d8ff;
+}
+
+body {
+    min-height: 100vh;
+    font-family: "Segoe UI", sans-serif;
+    background: linear-gradient(
+        135deg,
+        #ffe4ef,
+        #fff0f7,
+        #f0e3ff,
+        #ffe5ed
+    );
+    background-size: 300% 300%;
+    animation: gradient 12s ease infinite;
+    color: #914364;
+    overflow-x: hidden;
+}
+
+@keyframes gradient {
+    0%, 100% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+}
+
+/* Floating decorations */
+
+.floating {
+    position: fixed;
+    bottom: -50px;
+    pointer-events: none;
+    z-index: 0;
+    animation: floatUp linear forwards;
+    opacity: 0;
+}
+
+@keyframes floatUp {
+    0% {
+        transform: translateY(0) rotate(0deg);
+        opacity: 0;
+    }
+    15% { opacity: 0.8; }
+    100% {
+        transform: translateY(-115vh) rotate(35deg);
+        opacity: 0;
+    }
+}
+
+.sparkle {
+    position: fixed;
+    pointer-events: none;
+    animation: sparkle 2.5s ease-in-out infinite alternate;
+    z-index: 0;
+}
+
+@keyframes sparkle {
+    from {
+        opacity: 0.25;
+        transform: scale(.7);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1.2);
+    }
+}
+
+/* Intro */
+
+header {
+    min-height: 90vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 35px 20px;
+    position: relative;
+    z-index: 1;
+}
+
+.main-heart {
+    font-size: clamp(65px, 15vw, 100px);
+    animation: heartbeat 1.5s infinite;
+    filter: drop-shadow(0 8px 15px #f58bb566);
+}
+
+@keyframes heartbeat {
+    0%, 100% { transform: scale(1); }
+    15% { transform: scale(1.13); }
+    30% { transform: scale(1); }
+    45% { transform: scale(1.09); }
+}
+
+header h1 {
+    font-family: Georgia, serif;
+    color: #d94b85;
+    font-size: clamp(28px, 7vw, 48px);
+    margin: 20px 0 12px;
+    text-shadow: 0 3px 15px #ff9ec455;
+}
+
+header p {
+    font-size: 16px;
+    line-height: 1.9;
+    max-width: 450px;
+    color: #a65b7c;
+}
+
+.scroll-button {
+    margin-top: 30px;
+    padding: 14px 27px;
+    border: none;
+    border-radius: 50px;
+    color: white;
+    background: linear-gradient(135deg, #ff8bb6, #d95a91);
+    font-size: 15px;
+    font-weight: bold;
+    box-shadow: 0 8px 22px #e86b9b44;
+    cursor: pointer;
+    transition: .3s;
+}
+
+.scroll-button:hover {
+    transform: translateY(-4px) scale(1.03);
+    box-shadow: 0 12px 25px #e86b9b66;
+}
+
+/* Letter section */
+
+.letter-section {
+    position: relative;
+    z-index: 1;
+    width: min(900px, 92%);
+    margin: 0 auto;
+    padding: 25px 0 80px;
+}
+
+.section-heading {
+    text-align: center;
+    margin: 20px 0 40px;
+}
+
+.section-heading h2 {
+    color: #d94b85;
+    font-family: Georgia, serif;
+    font-size: clamp(26px, 6vw, 38px);
+    margin-bottom: 12px;
+}
+
+.section-heading p {
+    font-size: 14px;
+    color: #b47795;
+}
+
+.letter-card {
+    position: relative;
+    background: rgba(255, 255, 255, .72);
+    backdrop-filter: blur(12px);
+    border: 1px solid rgba(255, 255, 255, .9);
+    border-radius: 25px;
+    padding: clamp(22px, 5vw, 38px);
+    margin-bottom: 25px;
+    box-shadow: 0 10px 35px rgba(190, 91, 135, .10);
+    line-height: 2;
+    font-size: clamp(15px, 3.6vw, 17px);
+    white-space: pre-line;
+    overflow-wrap: anywhere;
+    opacity: 0;
+    transform: translateY(25px);
+    transition: opacity .8s ease, transform .8s ease;
+}
+
+.letter-card.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.letter-card::before {
+    content: "♡";
+    position: absolute;
+    top: 8px;
+    right: 20px;
+    font-size: 30px;
+    color: #ffabc9;
+    opacity: .75;
+}
+
+.letter-card p {
+    padding-right: 5px;
+}
+
+.end-card {
+    text-align: center;
+    background: linear-gradient(
+        145deg,
+        rgba(255, 255, 255, .85),
+        rgba(255, 225, 239, .85)
+    );
+}
+
+.end-card h2 {
+    color: #d94b85;
+    font-family: Georgia, serif;
+    margin-bottom: 20px;
+    font-size: 28px;
+}
+
+.big-ending {
+    font-size: clamp(20px, 5vw, 30px);
+    line-height: 1.9;
+    font-weight: bold;
+    color: #d94b85;
+}
+
+.final-heart {
+    display: inline-block;
+    margin-top: 20px;
+    font-size: 55px;
+    animation: heartbeat 1.5s infinite;
+}
+
+footer {
+    position: relative;
+    z-index: 1;
+    text-align: center;
+    padding: 30px 15px 45px;
+    color: #bd7594;
+    font-size: 13px;
+    line-height: 2;
+}
+
+footer .footer-heart {
+    font-size: 25px;
+}
+
+/* Back to top */
+
+.top-button {
+    position: fixed;
+    bottom: 18px;
+    right: 18px;
+    z-index: 5;
+    width: 45px;
+    height: 45px;
+    border: 1px solid white;
+    border-radius: 50%;
+    color: #d94b85;
+    background: rgba(255,255,255,.85);
+    box-shadow: 0 4px 15px #d94b8522;
+    cursor: pointer;
+    font-size: 20px;
+}
+
+/* Mobile adjustments */
+
+@media (max-width: 480px) {
+    header {
+        min-height: 85vh;
+    }
+
+    .letter-card {
+        border-radius: 20px;
+        margin-bottom: 18px;
+    }
+
+    .letter-section {
+        width: 92%;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after {
+        animation-duration: 0.01ms !important;
+        transition-duration: 0.01ms !important;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<header id="home">
+    <div class="main-heart">💗</div>
+
+    <h1>Meri Pyaari Jaanu 🎀</h1>
+
+    <p>
+        Ek chhotuuu si website,<br>
+        meri sabse pyaari si jaanuuu ke liye. 😭💐💓
+        <br><br>
+        Dil mein jitna pyaar hai naaa,<br>
+        uska thhodaaa sa hissa yahaan likha hai. 🥹🫶🏻
+    </p>
+
+    <button class="scroll-button"
+        onclick="document.getElementById('letters').scrollIntoView({behavior:'smooth'})">
+        Open Your Little World 💌
+    </button>
+</header>
+
+<main class="letter-section" id="letters">
+
+    <div class="section-heading">
+        <h2>Bas Tumhare Liye 💗</h2>
+        <p>Har lafz mein thhodaaa sa pyaar, aur bahut saaraaa tum. 🌷</p>
+    </div>
+
+    <article class="letter-card">
+        <p>Yaaaaaaarrrrrr vahhh itniiiii suuuunderrrr haiii 😭💗🎀
+Aasamaanooo se aayiii huiii ekkk chhotiii sii deviiiiii, meri pyaaaariii siii jaaaanuuuu 😭💐💓</p>
+    </article>
+
+    <article class="letter-card">
+        <p>Merrriiiii pyaaaariiiii jaaaanuuuu, meri chhotiii sii duniyaaaa, merrriiii sabbb kuchhhh, merrriiii sukoon ki jagahhhhh 😭🫶🏻💗
+Ufffff yaarrrr, kaiseee bataaaun mainnn ki kitnaaaa pyaaaaar karta hunnn usseeeeee, shabdon mein toh aata hii nahiiii haiii 😭💋💞</p>
+    </article>
+
+    <article class="letter-card">
+        <p>Mainnn uskaaaaa pyaaaaraaa bachhaaaa hunnnn yaaaarrrrr 😭😭💗
+USKAAA APNAAA CHHOTUUUU SA BACHHAAAAA 😭🎀🫶🏻
+Aurrrr vahhh mujhse itnaaaaa pyaaaaar kartiii haiiiii, ufffff ufffff, meraaa dil toh bassss pighal jaata haiiiii yaarrrrr 😭💓💓</p>
+    </article>
+
+    <article class="letter-card">
+        <p>Kabhiiii kabhiiii sochta hunnn ki yaarrrrr, aakhir maine aisa kya achha kiya tha jo mujhe itniii pyaaaariii siii ladki miliiiii 😭💗
+Bhagwaannn ne sachhh mein kuchhh zyaada hii karam kar diya mujhpeeee, itniiii sunder, itniiii pyaaaariii, itniiii masoom siii jaanuuu dekarrrrr 😭💐✨</p>
+    </article>
+
+    <article class="letter-card">
+        <p>Aurrrr uskiii baateinnnn yaaarrrrr, HAYEEEEEE 😭😭💗
+Uskaaa pyaaar se baat karnaaaa, uskaaa mujhe apnaaa bachhaaa samajhnnaaaa, uskaaa mere liye pyaaar dikhaanaaaa, UFFFFF MERA DILLLL YAARRRR 😭🫶🏻💞
+Mainnn kaiseee naaa pyaaar karunnn usseeee itnaaaaaa zyaadaaaaaa??? 😭💓</p>
+    </article>
+
+    <article class="letter-card">
+        <p>Mujheee naaaa bassss uskiii khushiii dekhniii haiii yaaarrrrr 🥹💗
+Vahhh jabbb khushhh hotiii haiii naaaa, toh merkooo bhi sabbb kuchhh achhaaa lagneee lagtaaa haiii 😭🎀
+Uskiii ekkk chhotiii siii khushiii ke liyeee mainnn hazaar baarrrr koshishhh kar saktaaa hunnn yaaarrrrr, kyunkiii merrriii jaanuuu ki muskurahatt hi toh merrre liye itniii pyaaaariii haiiii 😭💐💗</p>
+    </article>
+
+    <article class="letter-card">
+        <p>Aurrrr sunooooo, meri pyaaaariii siii jaanuuu, tumheee pataa bhi haiii tum kitniiii pyaaaariii hooooo??? 😭💓
+MATLAB KAISEEE KOIII ITNAAA SUNDER HO SAKTAAA HAI BHAIIIIII 😭😭🎀
+Aasamaannn ki pariyaaann bhi tumheee dekh karrrr bolti hongiii ki behennn, thhodaaa humein bhi sikhaa dooo 😭💗💋</p>
+    </article>
+
+    <article class="letter-card">
+        <p>Mainnn naaaa uskaaa hameshaaa pyaaaaraaa saaa bachhaaa banke rehnaaa chahta hunnn 😭🫶🏻💞
+Jisseee vahhh apniii saariii baateinnn bataa sakeee, jiskeee paasss vahhh binaaa socheee aa sakeee, jiskeee saathhh vahhh khul ke hanss sakeee, aurrr jiskeee saathhh usseee hameshaaa apnaapan mehsoos hooooo 😭💗🌷</p>
+    </article>
+
+    <article class="letter-card">
+        <p>Ufffff yaaarrrrr, kabhiii kabhiii toh bassss uske baare mein soch ke hii itniiii khushiii hotiii haiii naaaa, ki merkooo samajh hii nahiii aataaa mainnn itnaaaa kaiseee khushhh ho saktaaa hunnn 😭😭💓
+Merrriii jaanuuu haiii hii itniiii pyaaaariii, ki dil karta haiii uskiii saarii achhiii achhiii baateinnn ekkk diary mein likh duuu, aurrr phirrr bhi pages kammm padd jaayeinnn 😭🎀💐</p>
+    </article>
+
+    <article class="letter-card">
+        <p>Aurrrr bhaiiiii, uskiii aankheinnn, uskiii baateinnn, uskaaa chehraaaa, uskiii pyaaar bhariii aadateinnn, HAYEEEEEE 😭💗
+Mainnn toh gaya yaaarrrrr, bilkul gaya, koiii bachaaooo mujheee isss pyaaar seeeee 😭😭🫶🏻💞
+NAHIII BHAIIII, BACHAANA BHI MATTT, MUJHE TOH USSE HI PYAAR KARNA HAI 😭💋💗</p>
+    </article>
+
+    <article class="letter-card">
+        <p>Merrriii pyaaaariii siii deviiiiii, agarrrr kabhiii tumheee lageee naaaa ki tumseee koi pyaaar nahiii karta, toh ekkk baarrrr merrriii taraf dekh lenaaaa 🥹💗
+Tumheee ekkk aisaaa pagal insaan milegaaa jo tumhariii chhotiii chhotiii baaton mein bhi khushiii dhoondh letaaa haiii, jo tumhariii hansi pe khushhh hota haiii, jo tumhareee saathhh bitayeee hue palon ko apne dil ke sabseee pyaaaare hisse mein rakhta haiii 😭💓🌷</p>
+    </article>
+
+    <article class="letter-card">
+        <p>Kyunkiii yaaarrrrr, tum sirf meri pyaaaariii siii jaanuuu nahiii hooooo, tum merrre din kaaa sabseee pyaaaaraaa hissa hooooo 😭💗
+Aurrrr mainnn chahe kitna bhi badaaa ho jaaaun naaaa, tumhare saamneee tumharaaa vahii chhotuuu saaa bachhaaa rehnaaa chahta hunnn 😭🫶🏻🎀💞</p>
+    </article>
+
+    <article class="letter-card">
+        <p>HAYEEEEEEEEEE BHAGWAANNN 😭😭💗💗
+ITNIII PYAARIII KYUN HAI YAAAAAARRRRR????
+KISSSII NE ITNIII SUNDER, ITNIII PYAARIII, ITNIII DIL KE KAREEEB HONE KI PERMISSION KAISEEE DE DIIII USSEEEEE 😭💋💐💓</p>
+    </article>
+
+    <article class="letter-card end-card">
+        <h2>AND FINALLYYYY... 😭💗</h2>
+
+        <div class="big-ending">
+            MERRRIII PYYYYAAAAARIIII JAAAAANUUUUUU 😭😭😭💗🎀🫶🏻<br>
+            MERRRIII CHHOTIIII SIIII DUNIIIIYAAAAAA 😭💓<br>
+            MERRRIII SABBB KUCCHHHHHH 😭💗💐<br>
+            MAINNNN TUMSEEEEE BAHUTTTTT PYYYYAAAAAAR KARTAAAA HUNNNNN YAARRRRRR 😭😭💋💞
+        </div>
+
+        <div class="final-heart">💗</div>
+    </article>
+
+</main>
+
+<footer>
+    <div class="footer-heart">💗 🎀 🌷</div>
+    A little website, with a whole lot of love.<br>
+    Made with all my heart, just for you. 🫶🏻
+</footer>
+
+<button class="top-button" onclick="window.scrollTo({top:0,behavior:'smooth'})"
+        aria-label="Back to top">↑</button>
+
+<script>
+// Floating hearts and sparkles
+
+const decorations = ["💗", "💕", "♡", "💖", "🌸", "🎀", "✨", "💐"];
+
+function createFloating() {
+    const item = document.createElement("div");
+    item.className = "floating";
+    item.textContent = decorations[
+        Math.floor(Math.random() * decorations.length)
+    ];
+
+    item.style.left = Math.random() * 100 + "vw";
+    item.style.fontSize = (15 + Math.random() * 20) + "px";
+    item.style.animationDuration = (7 + Math.random() * 7) + "s";
+
+    document.body.appendChild(item);
+
+    setTimeout(() => item.remove(), 15000);
+}
+
+setInterval(createFloating, 450);
+
+// Decorative sparkles
+
+function createSparkle() {
+    const sparkle = document.createElement("div");
+    sparkle.className = "sparkle";
+    sparkle.textContent = Math.random() > 0.5 ? "✧" : "✦";
+
+    sparkle.style.left = Math.random() * 100 + "vw";
+    sparkle.style.top = Math.random() * 100 + "vh";
+    sparkle.style.fontSize = (10 + Math.random() * 12) + "px";
+    sparkle.style.color = "#f18ab2";
+    sparkle.style.animationDelay = Math.random() * 2 + "s";
+
+    document.body.appendChild(sparkle);
+    setTimeout(() => sparkle.remove(), 6000);
+}
+
+setInterval(createSparkle, 1000);
+
+// Reveal each paragraph as it scrolls into view
+
+const cards = document.querySelectorAll(".letter-card");
+
+const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+        if (entry.isIntersecting) {
+            entry.target.classList.add("visible");
+            observer.unobserve(entry.target);
+        }
+    });
+}, {
+    threshold: 0.12
+});
+
+cards.forEach(card => observer.observe(card));
+</script>
+
+</body>
+</html>
